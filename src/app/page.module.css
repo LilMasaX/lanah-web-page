@@ -1,10 +1,11 @@
 .page {
-  --gray-rgb: 0, 0, 0;
+  --gray-rgb: 218, 212, 205;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
+  --button-primary-hover: #F29367;
+
+  --button-secondary-hover: #FADADD;
 
   display: grid;
   grid-template-rows: 20px 1fr 20px;
@@ -14,6 +15,7 @@
   padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans);
+  background-color: #FFFDF9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,8 +24,8 @@
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
+    --button-primary-hover: #D9F2E6;
+    --button-secondary-hover: #F6B78D;
   }
 }
 
@@ -60,66 +62,101 @@
   display: flex;
   gap: 16px;
 }
+
 .landing {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: 
-      linear-gradient(120deg, #f8e1f4 0%, #ffe5d9 100%),
-      url('/fondo-crochet.jpg') center/cover no-repeat;
-    position: relative;
-  }
-  
-  .overlay {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 3rem 2rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    text-align: center;
-    max-width: 400px;
-    margin: 2rem;
-  }
-  
-  .logo {
-    max-width: 160px;
-    margin-bottom: 1.5rem;
-  }
-  
-  .title {
-    color: #c97ca4;
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .subtitle {
-    color: #7d5a5a;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .buttonLink {
-    text-decoration: none;
-  }
-  
-  .button {
-    background: linear-gradient(90deg, #c97ca4 0%, #f8e1f4 100%);
-    color: #fff;
-    border: none;
-    padding: 0.9rem 2.2rem;
-    border-radius: 2rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(201,124,164,0.15);
-    transition: background 0.2s, transform 0.2s;
-  }
-  
-  .button:hover {
-    background: linear-gradient(90deg, #a05c8c 0%, #ffe5d9 100%);
-    transform: translateY(-2px) scale(1.04);
-  }
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 80vh;
+  padding: 0 10%;
+  position: relative;
+  background: #FFFDF9;
+}
+
+.hero-content {
+  background: #FFFDF9;
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(242, 147, 103, 0.25);
+  max-width: 00px;
+  text-align: left;
+}
+
+.heroImage {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, #F6B78D, #FADADD);
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px 20px;
+  background: #FFFDF9;
+}
+
+.overlay {
+  background: rgba(250, 218, 221, 0.85);
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(242, 147, 103, 0.15);
+  text-align: center;
+  max-width: 400px;
+  margin: 2rem;
+}
+
+.logo {
+  max-width: 160px;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  color: #F29367;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.subtitle {
+  color: #DAD4CD;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.buttonLink {
+  text-decoration: none;
+}
+
+.button {
+  background: linear-gradient(90deg, #F6B78D 0%, #FADADD 100%);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(242, 147, 103, 0.15);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #F29367 0%, #D9F2E6 100%);
+  transform: translateY(-2px) scale(1.04);
+}
 
 
 .ctas a {
@@ -143,8 +180,8 @@
 }
 
 a.primary {
-  background: var(--foreground);
-  color: var(--background);
+  background: #F29367;
+  color: #FFFDF9;
   gap: 8px;
 }
 
@@ -169,15 +206,14 @@ a.secondary {
   flex-shrink: 0;
 }
 
-/* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
-    background: var(--button-primary-hover);
+    background: #F6B78D;
     border-color: transparent;
   }
 
   a.secondary:hover {
-    background: var(--button-secondary-hover);
+    background: #D9F2E6;
     border-color: transparent;
   }
 
