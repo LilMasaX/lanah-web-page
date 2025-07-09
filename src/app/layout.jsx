@@ -12,9 +12,6 @@ export default function RootLayout({ children }) {
         <header>
           <div className="header">
             <img src="/logo.png" alt="Lanah logo" className="logo" />
-            <div className="logo">
-              {}
-            </div>
             <h1 className="title">Lanah</h1>
           </div>
           <nav className="nav">
@@ -26,7 +23,7 @@ export default function RootLayout({ children }) {
 
         <main>{children}</main>
 
-        <footer style={{ textAlign: "center", padding: "1rem", background: "#FFE5D0", marginTop: "2rem" }}>
+        <footer className="footer">
           © 2025 Lanah. Todos los derechos reservados.
         </footer>
       </body>
