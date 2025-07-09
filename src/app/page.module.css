@@ -59,6 +59,67 @@
 .ctas {
   display: flex;
   gap: 16px;
+
+  .landing {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: 
+      linear-gradient(120deg, #f8e1f4 0%, #ffe5d9 100%),
+      url('/fondo-crochet.jpg') center/cover no-repeat;
+    position: relative;
+  }
+  
+  .overlay {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 3rem 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    text-align: center;
+    max-width: 400px;
+    margin: 2rem;
+  }
+  
+  .logo {
+    max-width: 160px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .title {
+    color: #c97ca4;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .subtitle {
+    color: #7d5a5a;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .buttonLink {
+    text-decoration: none;
+  }
+  
+  .button {
+    background: linear-gradient(90deg, #c97ca4 0%, #f8e1f4 100%);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 2.2rem;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(201,124,164,0.15);
+    transition: background 0.2s, transform 0.2s;
+  }
+  
+  .button:hover {
+    background: linear-gradient(90deg, #a05c8c 0%, #ffe5d9 100%);
+    transform: translateY(-2px) scale(1.04);
+  }
 }
 
 .ctas a {

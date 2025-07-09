@@ -9,19 +9,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
-        <header style={{
-          background: "#F4A261",
-          color: "#fff",
-          padding: "1rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <img src="/logo.png" alt="Lanah logo" style={{ height: "40px", marginRight: "10px" }} />
-            <h1 style={{ margin: 0 }}>Lanah</h1>
+        <header>
+          <div className="header">
+            <img src="/logo.png" alt="Lanah logo" className="logo" />
+            <div className="logo">
+              {}
+            </div>
+            <h1 className="title">Lanah</h1>
           </div>
-          <nav style={{ display: "flex", gap: "1rem" }}>
+          <nav className="nav">
             <a href="/">Inicio</a>
             <a href="/productos">Productos</a>
             <a href="/carrito">Carrito</a>

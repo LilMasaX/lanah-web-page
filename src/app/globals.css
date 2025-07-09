@@ -18,9 +18,40 @@ a {
   text-decoration: none;
   font-weight: bold;
 }
+.logo {
+  
+  height: 10rem;
+  margin-right: 10rem;
+}
 
 a:hover {
   color: var(--orange-soft);
+}
+
+header {
+  background: #F4A261;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: var(--peach-light);
+  margin-top: 2rem;
 }
 
 button {
