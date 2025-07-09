@@ -1,0 +1,51 @@
+.card {
+  border-radius: 1rem;
+  border: 1px solid var(--coral, #F4A261);
+  background: var(--peach-light, #FFE5D0);
+  color: var(--brown-light, #8D5524);
+  box-shadow: 0 4px 12px rgba(244, 162, 97, 0.08);
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(231, 111, 81, 0.15);
+}
+
+.imagen {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  background: #fff;
+}
+
+.info {
+  width: 100%;
+  text-align: center;
+}
+
+.nombre {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: var(--brown-light, #8D5524);
+}
+
+.precio {
+  color: var(--orange-soft, #E76F51);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.stock {
+  font-size: 0.95rem;
+  color: var(--coral, #F4A261);
+  margin-bottom: 1rem;
+}
