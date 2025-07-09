@@ -59,8 +59,8 @@
 .ctas {
   display: flex;
   gap: 16px;
-
-  .landing {
+}
+.landing {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -120,7 +120,7 @@
     background: linear-gradient(90deg, #a05c8c 0%, #ffe5d9 100%);
     transform: translateY(-2px) scale(1.04);
   }
-}
+
 
 .ctas a {
   appearance: none;
