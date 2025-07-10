@@ -18,10 +18,12 @@ a {
   text-decoration: none;
   font-weight: bold;
 }
+
 .logo {
-  
-  height: 10rem;
+  background: #E76F51;
+  height: 8rem;
   margin-right: 10rem;
+  margin-left: 5rem;
 }
 
 a:hover {
@@ -30,21 +32,31 @@ a:hover {
 
 header {
   background: #F4A261;
-    color: #fff;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  color: #fff;
+  padding: 0%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1.5rem;
 }
 
 .header {
   display: flex;
   align-items: center;
+  font-style: italic;
 }
 
 .nav {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
+  padding: 1rem 5rem;
+  font-style: italic;
+  font-size: 1.25rem;
+  background: var(--orange-soft);
+  border-radius: 1rem;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-right: 5rem;
 }
 
 .footer {
