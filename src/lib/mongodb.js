@@ -1,26 +1,28 @@
-import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
-const uri = process.env.MONGO_URI;
-const options = {};
+const MONGODB_URI = process.env.MONGODB_URI;
 
-let client;
-let clientPromise;
-
-if (!process.env.MONGO_URI) {
-  throw new Error("Por favor define la variable de entorno MONGO_URI en .env.local");
+if (!MONGODB_URI) {
+  throw new Error("Falta MONGODB_URI en las variables de entorno");
 }
 
-if (process.env.NODE_ENV === "development") {
-  // En desarrollo, usa variable global para no crear varias conexiones al recargar
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
-    global._mongoClientPromise = client.connect();
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+export async function connectDB() {
+  if (cached.conn) {
+    return cached.conn;
   }
-  clientPromise = global._mongoClientPromise;
-} else {
-  // En producción, crea nueva conexión
-  client = new MongoClient(uri, options);
-  clientPromise = client.connect();
-}
 
-export default clientPromise;
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI, {
+      bufferCommands: false,
+      dbName: "crochet_db", // cambia por tu nombre de BD
+    }).then((mongoose) => mongoose);
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
+}

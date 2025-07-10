@@ -1,4 +1,5 @@
 import "./globals.css";
+import AdminFooterLink from "../components/AdminFooterLink/AdminFooterLink"; // Ajusta la ruta si es necesario
 
 export const metadata = {
   title: "Lanah - Tienda de Crochet",
@@ -24,9 +25,10 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
 
         <footer className="footer">
-          © 2025 Lanah. Todos los derechos reservados.
+          <AdminFooterLink />
+          2025 Lanah. Todos los derechos reservados.
         </footer>
       </body>
     </html>
-  );
+  ); 
 }
