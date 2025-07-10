@@ -13,8 +13,8 @@ export default function HomePage() {
           </a>
         </div>
 
-        <div className={styles.heroImage}>
-          <img src="/donpollo.png" alt="gato fondo" className={styles.heroImage} />
+        <div className={styles.heroImageContainer}>
+          <img src="/Gato.png" alt="gato fondo" className={styles.heroImage} />
         </div>
       </section>
 
