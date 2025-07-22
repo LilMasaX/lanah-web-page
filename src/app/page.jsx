@@ -1,7 +1,7 @@
-"use client"; // ¡Añade esto en la primera línea!
-
+"use client";
 import { useState, useEffect } from 'react';
 import styles from './page.module.css';
+import SplitText from "@/components/SplitText/SplitText";
 
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -13,9 +13,26 @@ export default function HomePage() {
     }, 10000);
     return () => clearInterval(interval);
   }, [images.length]);
-
+  const handleAnimationComplete = () => {
+    console.log('All letters have animated!');
+  };
   return (
     <section className={styles.landing}>
+      <div>
+        <SplitText
+          text="Lanah representa el cariño y la dedicación que se tejen con hilos de amor y la dulzura felina en cada detalle."
+          className={styles.splitText}
+          delay={50}
+          duration={0.1}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          onLetterAnimationComplete={handleAnimationComplete}
+        />
+      </div>
+      <br></br>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <img src="/logo.png" alt="Lanah logo" className={styles.logo} />
@@ -25,7 +42,6 @@ export default function HomePage() {
             <button className={styles.button}>Ver Productos</button>
           </a>
         </div>
-
         <div className={styles.heroImageContainer}>
           {images.map((image, index) => (
             <img
@@ -51,6 +67,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <br></br>
       <section>
         <div className={styles.features}>
           <div className={styles.featureItem}>
@@ -70,7 +87,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
     </section>
   );
 }
