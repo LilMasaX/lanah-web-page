@@ -9,19 +9,20 @@ if (!MONGODB_URI) {
 let cached = global.mongoose;
 
 if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+  cached = global.mongoose = { conn: null, promise: null, dbName: null };
 }
 
-export async function connectDB() {
-  if (cached.conn) {
+export async function connectDB(dbName = "crochet_db") {
+  if (cached.conn && cached.dbName === dbName) {
     return cached.conn;
   }
 
-  if (!cached.promise) {
+  if (!cached.promise || cached.dbName !== dbName) {
     cached.promise = mongoose.connect(MONGODB_URI, {
       bufferCommands: false,
-      dbName: "crochet_db", // cambia por tu nombre de BD
+      dbName,
     }).then((mongoose) => mongoose);
+    cached.dbName = dbName;
   }
   cached.conn = await cached.promise;
   return cached.conn;
