@@ -1,7 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
-import ProductForm from "../ProductForm/ProductForm";
+import { useState } from "react";
 import { actualizarProducto } from "@/actions/products/editProduct";
+import ProductForm from "../ProductForm/ProductForm";
 import styles from "./EditProductModal.module.css";
 
 export default function EditProductModal({ producto, onClose }) {

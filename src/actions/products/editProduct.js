@@ -3,12 +3,12 @@ import { connectDB } from "@/lib/mongodb";
 import { Producto } from "@/models/producto";
 import { revalidatePath } from "next/cache";
 import cloudinary from "@/lib/cloudinary";
+import { sanitizeDoc } from "@/utils/sanitizeDoc";
 
 export async function actualizarProducto(id, formData) {
   try {
     await connectDB();
 
-    // Obtener producto actual primero
     const productoActual = await Producto.findById(id);
     if (!productoActual) {
       return { error: "Producto no encontrado" };
@@ -21,16 +21,14 @@ export async function actualizarProducto(id, formData) {
       stock: parseInt(formData.get("stock")),
     };
 
-    // Manejo de la imagen
     const imageFile = formData.get("imagen");
     let imageUrl = productoActual.imagen;
 
     if (imageFile && imageFile.size > 0) {
-      // Eliminar imagen anterior si existe
       if (productoActual.imagen) {
         try {
-          const urlParts = productoActual.imagen.split('/');
-          const publicId = urlParts[urlParts.length - 1].split('.')[0];
+          const urlParts = productoActual.imagen.split("/");
+          const publicId = urlParts[urlParts.length - 1].split(".")[0];
           const fullPublicId = `productos/${publicId}`;
           await cloudinary.uploader.destroy(fullPublicId);
         } catch (error) {
@@ -38,7 +36,6 @@ export async function actualizarProducto(id, formData) {
         }
       }
 
-      // Subir nueva imagen
       try {
         const bytes = await imageFile.arrayBuffer();
         const buffer = Buffer.from(bytes);
@@ -63,7 +60,6 @@ export async function actualizarProducto(id, formData) {
       }
     }
 
-    // Actualizar el producto
     const productoActualizado = await Producto.findByIdAndUpdate(
       id,
       {
@@ -74,7 +70,11 @@ export async function actualizarProducto(id, formData) {
     );
 
     revalidatePath("/admin/products");
-    return { success: true, producto: productoActualizado };
+
+    return {
+      success: true,
+      producto: sanitizeDoc(productoActualizado),
+    };
   } catch (error) {
     console.error("Error actualizando producto:", error);
     return { error: error.message || "Error al actualizar el producto" };

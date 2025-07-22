@@ -4,9 +4,17 @@ import mongoose from "mongoose";
 
 async function connectDB() {
   if (mongoose.connection.readyState === 0) {
-    await mongoose.connect(process.env.MONGODB_URI);
+    try {
+      await mongoose.connect(process.env.MONGODB_URI, {
+        dbName: "dblanah", // asegúrate de esto si lo usas así
+      });
+    } catch (err) {
+      console.error("❌ Error connecting to MongoDB:", err);
+      throw err;
+    }
   }
 }
+
 
 export async function getProductos() {
   await connectDB();

@@ -12,7 +12,7 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null, dbName: null };
 }
 
-export async function connectDB(dbName = "crochet_db") {
+export async function connectDB(dbName = "dblanah") {
   if (cached.conn && cached.dbName === dbName) {
     return cached.conn;
   }
