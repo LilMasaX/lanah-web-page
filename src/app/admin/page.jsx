@@ -7,7 +7,7 @@ export default function AdminDashboard() {
       <h1 className={styles.title}>Panel de Administración</h1>
 
       <div className={styles.modules}>
-        <Link href="/admin/productos" className={styles.card}>
+        <Link href="/admin/products" className={styles.card}>
           <h2>🧶 Productos</h2>
           <p>Administra tu catálogo, stock y fotos de los productos.</p>
         </Link>
