@@ -1,6 +1,5 @@
 import "./globals.css";
-import AdminFooterLink from "../components/AdminFooterLink/AdminFooterLink"; // Ajusta la ruta si es necesario
-
+import AdminFooterLink from "../components/AdminFooterLink/AdminFooterLink"; 
 export const metadata = {
   title: "Lanah - Tienda de Crochet",
   description: "Tienda artesanal de crochet hecha con amor",
