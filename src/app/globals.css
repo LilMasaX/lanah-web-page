@@ -1,14 +1,9 @@
 :root {
   --peach-light: #F6B78D;
-  /* Melocotón suave (antes #FFE5D0) */
   --coral: #F29367;
-  /* Naranja pastel (antes #F4A261) */
   --orange-soft: #E76F51;
-  /* Naranja más intenso (igual) */
   --brown-light: #DAD4CD;
-  /* Gris cálido claro (antes #8D5524) */
   --white: #FFFDF9;
-  /* Blanco algodón (antes #FFFFFF) */
 }
 
 body {
@@ -65,24 +60,14 @@ header {
 }
 
 .footer {
-  background: #F29367;
-  /* Naranja pastel (acento vibrante) */
-  /* O estas otras opciones: */
-  /* background: #D9F2E6;   Menta suave (estilo fresco) */
-  /* background: #F6B78D;   Melocotón suave (cálido) */
-  /* background: #DAD4CD;   Gris cálido (elegante y neutro) */
-
-  color: #FFFDF9;
-  /* Blanco algodón (texto legible) */
+  background: #F29367;color: #FFFDF9;
   text-align: center;
   padding: 1.5rem;
-  /* Más espacio interno */
   margin-top: 2rem;
 }
 
 button {
   background-color: var(--coral);
-  /* Cambiado de var(--coral) a nuevo valor */
   color: var(--white);
   padding: 10px 20px;
   border: none;
