@@ -1,5 +1,5 @@
 import "./globals.css";
-import AdminFooterLink from "../components/AdminFooterLink/AdminFooterLink"; 
+import AdminFooterLink from "../components/AdminFooterLink/AdminFooterLink";
 export const metadata = {
   title: "Lanah - Tienda de Crochet",
   description: "Tienda artesanal de crochet hecha con amor",
@@ -12,7 +12,6 @@ export default function RootLayout({ children }) {
         <header>
           <div className="header">
             <img src="/logo.png" alt="Lanah logo" className="logo" />
-            <h1 className="title">Lanah</h1>
           </div>
           <nav className="nav">
             <a href="/">Inicio</a>
@@ -29,5 +28,5 @@ export default function RootLayout({ children }) {
         </footer>
       </body>
     </html>
-  ); 
+  );
 }
