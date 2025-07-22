@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
           </div>
           <nav className="nav">
             <a href="/">Inicio</a>
-            <a href="/productos">Productos</a>
+            <a href="/products">Productos</a>
             <a href="/carrito">Carrito</a>
           </nav>
         </header>
