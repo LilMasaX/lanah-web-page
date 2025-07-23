@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 
 const CartContext = createContext();
@@ -9,7 +9,20 @@ export function useCart() {
 }
 
 export function CartProvider ({ children }) {
-    const [cart, setCart] = useState ([]);
+    const [cart, setCart] = useState([]);
+
+    // 1. Cargar carrito desde localStorage al iniciar
+    useEffect(() => {
+        const storedCart = localStorage.getItem("cart");
+        if (storedCart) {
+            setCart(JSON.parse(storedCart));
+        }
+    }, []);
+
+    // 2. Guardar carrito en localStorage cada vez que cambie
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     const addToCart = (product) => {
         setCart((prev) => [...prev, product]);

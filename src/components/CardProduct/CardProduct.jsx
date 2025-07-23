@@ -2,21 +2,12 @@
 import { useState } from "react";
 import styles from "./CardProduct.module.css";
 import { formatCurrency } from "@/utils/currency";
-import EditProductModal from "../EditProductModal/EditProductModal";
+import { useCart } from "@/context/CartContext";
+import { toast } from "sonner";
 
-export default function CardProduct({ producto, onDelete }) {
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+export default function CardProduct({ producto}) {
 
-  const handleDelete = async () => {
-    if (confirm("¿Estás seguro de eliminar este producto?")) {
-      try {
-        await onDelete(producto._id);
-      } catch (error) {
-        console.error("Error al eliminar:", error);
-        alert("No se pudo eliminar el producto");
-      }
-    }
-  };
+  const { addToCart } = useCart ();
 
   return (
     <>
@@ -38,29 +29,25 @@ export default function CardProduct({ producto, onDelete }) {
           </p>
           <div className={styles.buttonGroup}>
             <button 
-              onClick={() => setIsEditModalOpen(true)} 
-              className={styles.editButton}
-              aria-label="Editar producto"
+              onClick={() => {
+                addToCart(producto);
+                toast.success("¡Producto agregado al carrito!");
+              }}
+              className={styles.addProduct}
+              aria-label="Añadir al Carrito"
             >
               Agregar al carrito
             </button>
             <button 
-              onClick={handleDelete} 
-              className={styles.deleteButton}
-              aria-label="Eliminar producto"
+              // onClick={handleBuyNow}
+              className={styles.buyButton}
+              aria-label="Comprar Ahora"
             >
               Comprar Ahora
             </button>
           </div>
         </div>
       </div>
-
-      {isEditModalOpen && (
-        <EditProductModal 
-          producto={producto} 
-          onClose={() => setIsEditModalOpen(false)}
-        />
-      )}
     </>
   );
 }
