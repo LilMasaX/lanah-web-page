@@ -1,24 +1,22 @@
-/* ----- Estructura Base ----- */
 .header {
     background: #F29367;
+    color: #fff;
+    padding: 0%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     border-radius: 1.5rem;
-    padding: 0.5rem 2rem;
-
-    margin: 0.5rem;
-
-    min-height: 48px;
-    /* Hace el header más pequeño */
+    padding-right: 2rem;
+    /* Añade espacio a la derecha */
 }
 
-/* ----- Escritorio (default) ----- */
 .nav-content {
     display: flex;
     align-items: center;
     gap: 2rem;
+    background-color: var(--orange-soft);
+    border-radius: 1rem;
+    padding: 1rem 2rem;
 }
 
 .nav-links {
