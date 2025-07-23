@@ -2,7 +2,7 @@ import "./globals.css";
 import AdminFooterLink from "../components/AdminFooterLink/AdminFooterLink";
 import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/NavBar/NavBar";
-
+import "@/components/NavBar/NavBar.css";
 
 export const metadata = {
   title: "Lanah - Tienda de Crochet",
@@ -16,22 +16,11 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <header>
             <div className="header">
-              <img src="/logo.png" alt="Lanah logo" className="logo" />
-              <h1 className="title">Lanah Crochet</h1>
+              <img src="/logo.png" alt="Lanah logo" className="logoH" />
+              <Navbar />
             </div>
-            <Navbar />
-          </header>
 
-        <header>
-          <div className="header">
-            <img src="/logo.png" alt="Lanah logo" className="logo" />
-          </div>
-          <nav className="nav">
-            <a href="/">Inicio</a>
-            <a href="/products">Productos</a>
-            <a href="/carrito">Carrito</a>
-          </nav>
-        </header>
+          </header>
           <main>{children}</main>
 
           <footer className="footer">

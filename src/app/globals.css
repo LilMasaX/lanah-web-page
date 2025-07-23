@@ -6,32 +6,13 @@
   --white: #FFFDF9;
 }
 
-header {
-  background: #F29367;
-  color: #fff;
-  padding: 0%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 1.5rem;
+.logoH {
+  background: #E76F51;
+  height: 8rem;
+  margin-right: 10rem;
+  margin-left: 5rem;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-}
-
-.nav {
-  display: flex;
-  gap: 5rem;
-  padding: 0.8rem 2rem;
-  font-size: 1.25rem;
-  background: var(--orange-soft);
-  border-radius: 1rem;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin-right: 5rem;
-}
 
 body {
   margin: 0;
@@ -40,17 +21,11 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+
 a {
   color: var(--white);
   text-decoration: none;
   font-weight: bold;
-}
-
-.logo {
-  background: #E76F51;
-  height: 8rem;
-  margin-right: 10rem;
-  margin-left: 5rem;
 }
 
 a:hover {

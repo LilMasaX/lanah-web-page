@@ -104,7 +104,21 @@
   border-radius: 1.5rem
 }
 
-@media (min-width: 1000px) {
+@media (max-width: 640px) {
+  .heroContent {
+    width: 90%;
+    padding: 2rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .heroImage {
+    width: 50%;
+    left: 1%;
+  }
+}
+
+@media (min-width: 1200px) {
   .heroImage {
     width: 90%;
     left: 5%;
@@ -150,6 +164,7 @@
     height: 180px;
     margin: 0 0 12px 0;
   }
+
 }
 
 .logo {
