@@ -1,10 +1,18 @@
 :root {
   --peach-light: #F6B78D;
-  --coral: #F29367;
+  --coral: #6767f2;
   --orange-soft: #E76F51;
   --brown-light: #DAD4CD;
   --white: #FFFDF9;
 }
+
+.logoH {
+  background: #E76F51;
+  height: 8rem;
+  margin-right: 10rem;
+  margin-left: 5rem;
+}
+
 
 body {
   margin: 0;
@@ -13,54 +21,20 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+
 a {
   color: var(--white);
   text-decoration: none;
   font-weight: bold;
 }
 
-.logo {
-  background: #E76F51;
-  height: 8rem;
-  margin-right: 10rem;
-  margin-left: 5rem;
-}
-
 a:hover {
   color: var(--orange-soft);
 }
 
-header {
-  background: #F29367;
-  color: #fff;
-  padding: 0%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 1.5rem;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  font-style: italic;
-}
-
-.nav {
-  display: flex;
-  gap: 2rem;
-  padding: 1rem 5rem;
-  font-style: italic;
-  font-size: 1.25rem;
-  background: var(--orange-soft);
-  border-radius: 1rem;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin-right: 5rem;
-}
-
 .footer {
-  background: #F29367;color: #FFFDF9;
+  background: #F29367;
+  color: #FFFDF9;
   text-align: center;
   padding: 1.5rem;
   margin-top: 2rem;
@@ -78,4 +52,33 @@ button {
 
 button:hover {
   background-color: var(--orange-soft);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-row-start: 2;
+}
+
+.main ol {
+  font-family: var(--font-geist-mono);
+  padding-left: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  list-style-position: inside;
+}
+
+.main li:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.main code {
+  font-family: inherit;
+  background: var(--gray-alpha-100);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
 }

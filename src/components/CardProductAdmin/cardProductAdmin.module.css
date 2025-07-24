@@ -87,7 +87,8 @@
   margin-top: 0.5rem;
 }
 
-.editButton, .deleteButton {
+.editButton,
+.deleteButton {
   background-color: transparent;
   border: none;
   cursor: pointer;

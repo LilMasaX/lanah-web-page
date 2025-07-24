@@ -3,6 +3,7 @@ import AdminFooterLink from "../components/AdminFooterLink/AdminFooterLink";
 import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/NavBar/NavBar";
 import { Toaster } from "sonner";
+import "@/components/NavBar/NavBar.css";
 
 export const metadata = {
   title: "Lanah - Tienda de Crochet",
@@ -17,11 +18,11 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <header>
             <div className="header">
-              <img src="/logo.png" alt="Lanah logo" className="logo" />
+              <img src="/logo.png" alt="Lanah logo" className="logoH" />
+              <Navbar />
             </div>
-            <Navbar />
-          </header>
 
+          </header>
           <main>{children}</main>
 
           <footer className="footer">
