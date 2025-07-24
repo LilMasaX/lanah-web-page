@@ -87,7 +87,7 @@
   margin-top: 0.5rem;
 }
 
-.editButton, .deleteButton {
+.buyButton, .addProductButton {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -100,20 +100,20 @@
   justify-content: center;
 }
 
-.editButton {
+.buyButton {
   color: var(--brown-light, #8D5524);
 }
 
-.deleteButton {
+.addProductButton {
   color: var(--orange-soft, #E76F51);
 }
 
-.editButton:hover {
+.buyButton:hover {
   background-color: rgba(141, 85, 36, 0.1);
   transform: scale(1.1);
 }
 
-.deleteButton:hover {
+.addProductButton:hover {
   background-color: rgba(231, 111, 81, 0.1);
   transform: scale(1.1);
 }
