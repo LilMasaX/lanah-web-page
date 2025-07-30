@@ -34,7 +34,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--peach-light);
-  color: var(--brown-light);
+  color: black;
   font-family: 'Nunito', sans-serif;
 }
 
@@ -54,6 +54,12 @@ a:hover {
   color: #FFFDF9;
   text-align: center;
   padding: 1.5rem;
+  font-size: 0.9rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 button {
