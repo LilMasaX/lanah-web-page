@@ -1,21 +1,19 @@
 .header {
-    background: #F29367;
-    color: #fff;
-    padding: 0%;
+    background: #ffffffe1;
+    color: #000;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 1.5rem;
     padding-right: 2rem;
-    /* Añade espacio a la derecha */
+    position: relative;
 }
 
 .nav-content {
     display: flex;
     align-items: center;
     gap: 2rem;
-    background-color: var(--orange-soft);
-    border-radius: 1rem;
+    background-color: #fff;
     padding: 1rem 2rem;
 }
 
@@ -25,7 +23,8 @@
 }
 
 .nav-links a {
-    color: white;
+    background: transparent;
+    color: black;
     text-decoration: none;
     transition: opacity 0.2s;
 }
@@ -34,10 +33,16 @@
     opacity: 0.8;
 }
 
-/* Carrito */
 .cart-btn {
     position: relative;
     display: flex;
+    color: black;
+    transition: color 0.2s;
+}
+
+.cart-btn:hover {
+    color: #F29367;
+    /* Efecto hover naranja para el ícono */
 }
 
 .cart-counter {
@@ -54,23 +59,24 @@
     justify-content: center;
     font-size: 10px;
     font-weight: bold;
+    border: 1px solid #F29367;
+    /* Borde naranja para mejor visibilidad */
 }
 
-/* Hamburguesa (oculto en escritorio) */
 .hamburger-btn {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: black;
     cursor: pointer;
     z-index: 10;
+    font-size: 1.5rem;
+    padding: 1rem;
 }
 
-/* ----- Móvil (menú hamburguesa) ----- */
 @media (max-width: 768px) {
     .hamburger-btn {
         display: block;
-        /* Mostrar botón */
     }
 
     .nav-content {
@@ -79,13 +85,14 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background: #F29367;
+        background: #fff;
         flex-direction: column;
         justify-content: center;
-        gap: 2rem;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
+        gap: 3rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-out;
         z-index: 5;
+        padding: 2rem;
     }
 
     .nav-content.show {
@@ -95,6 +102,21 @@
     .nav-links {
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+        gap: 2.5rem;
+    }
+
+    .nav-links a {
+        color: black;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .cart-btn {
+        color: black;
+        font-size: 1.2rem;
+    }
+
+    .cart-btn:hover {
+        color: #F29367;
     }
 }

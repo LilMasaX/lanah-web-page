@@ -18,21 +18,20 @@ export default function HomePage() {
   };
   return (
     <section className={styles.landing}>
-      <div>
+      <div className={styles.splitText}>
         <SplitText
           text="Lanah representa el cariño y la dedicación que se tejen con hilos de amor y la dulzura felina en cada detalle."
-          className={styles.splitText}
           delay={50}
-          duration={0.1}
+          duration={0.5}
           ease="power3.out"
-          splitType="chars"
+          splitType="words"
           from={{ opacity: 0, y: 40 }}
           to={{ opacity: 1, y: 0 }}
           threshold={0.1}
           onLetterAnimationComplete={handleAnimationComplete}
         />
       </div>
-      <br></br>
+      <br />
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <img src="/logo.png" alt="Lanah logo" className={styles.logo} />

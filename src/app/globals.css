@@ -13,9 +13,26 @@
   margin-left: 5rem;
 }
 
+@media (max-width: 900px) {
+  .logoH {
+    height: 6rem;
+    margin-right: 4rem;
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .logoH {
+    height: 4rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+}
+
 
 body {
   margin: 0;
+  padding: 0;
   background-color: var(--peach-light);
   color: var(--brown-light);
   font-family: 'Nunito', sans-serif;

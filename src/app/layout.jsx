@@ -19,10 +19,8 @@ export default function RootLayout({ children }) {
               <img src="/logo.png" alt="Lanah logo" className="logoH" />
               <Navbar />
             </div>
-
           </header>
           <main>{children}</main>
-
           <footer className="footer">
             <AdminFooterLink />
             2025 Lanah. Todos los derechos reservados.
