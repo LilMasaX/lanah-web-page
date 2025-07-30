@@ -1,9 +1,13 @@
 "use client"
+import { useState } from "react";
 import { useCart } from "@/context/CartContext";
+import ModalForm from "@/components/ModalForm/ModalForm";
+import { formatCurrency } from "@/utils/currency";
 
 export default function CartPage() {
-  const { cart, removeFromCart } = useCart();
-  const total = cart.reduce((sum, item) => sum + (item.precio || 0), 0);
+  const { cart, removeFromCart, clearCart } = useCart();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const total = cart.reduce((sum, item) => sum + (item.precio || 0) * (item.amount || 1), 0);
   return (
     <section>
       <div>
@@ -13,8 +17,8 @@ export default function CartPage() {
         ) : (
           cart.map((item) => (
             <div key={item._id}>
-              <span>{item.nombre}</span>
-              <button onClick={() => removeFromCart(item._id)}>Eliminar</button>
+              <span>{item.nombre} x{item.amount}</span>
+              <button onClick={() => removeFromCart(item._id)}>Eliminar uno</button>
             </div>
           ))
         )}
@@ -25,24 +29,21 @@ export default function CartPage() {
           <p>0</p>
         ) : (
           <div>
-            <span>{total} $</span>
+            <span>{formatCurrency(total)} $</span>
           </div>
         )}
       </div>
       <div>
-        <button disabled={cart.length === 0}>
+        <button onClick={() => setIsModalOpen(true)} disabled={cart.length === 0}>
           Pagar
         </button>
-        <button onClick={() => clearCart()} disabled={cart.length === 0}>
+        <button onClick={clearCart} disabled={cart.length === 0}>
           Vaciar carrito
         </button>
         <div>
-          <button onClick={() => window.location.href = '/whatsapp'}>
-            Contactar por WhatsApp
-          </button>
         </div>
       </div>
-
+      <ModalForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }
