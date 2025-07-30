@@ -4,7 +4,6 @@
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
 
   --button-primary-hover: #F29367;
-
   --button-secondary-hover: #FADADD;
 
   display: grid;
@@ -16,17 +15,6 @@
   gap: 64px;
   font-family: var(--font-geist-sans);
   background-color: #FFFDF9;
-}
-
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #D9F2E6;
-    --button-secondary-hover: #F6B78D;
-  }
 }
 
 .landing {
@@ -57,28 +45,6 @@
   display: inline-block;
 }
 
-@media (max-width: 768px) {
-  .splitText {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    padding: 5%;
-  }
-}
-
-@media (max-width: 768px) {
-  .splitText {
-    font-size: 2rem !important;
-    padding: 4% 2rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .splitText {
-    font-size: 1.3rem !important;
-    padding: 2% 1rem !important;
-  }
-}
-
 .hero {
   display: flex;
   align-items: center;
@@ -90,7 +56,6 @@
 
 .heroContent {
   background: #FFFDF9;
-
   padding: 3rem 2rem;
   border-radius: 1.5rem;
   max-width: 500px;
@@ -124,31 +89,6 @@
   border-radius: 1.5rem
 }
 
-@media (max-width: 640px) {
-  .heroContent {
-    width: 90%;
-    padding: 2rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .heroImage {
-    width: 50%;
-    left: 1%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .heroImage {
-    width: 90%;
-    left: 5%;
-  }
-}
-
-.dotsContainer {
-  display: none;
-}
-
 .features {
   display: flex;
   justify-content: center;
@@ -168,23 +108,6 @@
   box-shadow: 0 2px 12px rgba(242, 147, 103, 0.08);
   background: #fff;
   margin: 0 12px;
-}
-
-@media (max-width: 800px) {
-  .features {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    padding: 32px 0;
-  }
-
-  .features img {
-    width: 98vw;
-    max-width: 340px;
-    height: 180px;
-    margin: 0 0 12px 0;
-  }
-
 }
 
 .logo {
@@ -234,6 +157,77 @@
   justify-content: center;
 }
 
+/* --- MEDIA QUERIES --- */
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+
+    --button-primary-hover: #D9F2E6;
+    --button-secondary-hover: #F6B78D;
+  }
+}
+
+@media (max-width: 768px) {
+  .splitText {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    padding: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .splitText {
+    font-size: 2rem !important;
+    padding: 4% 2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .splitText {
+    font-size: 1.3rem !important;
+    padding: 2% 1rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroContent {
+    width: 90%;
+    padding: 2rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .heroImage {
+    width: 50%;
+    left: 1%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .heroImage {
+    width: 90%;
+    left: 5%;
+  }
+}
+
+@media (max-width: 800px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 0;
+  }
+
+  .features img {
+    width: 98vw;
+    max-width: 340px;
+    height: 180px;
+    margin: 0 0 12px 0;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   .logo {

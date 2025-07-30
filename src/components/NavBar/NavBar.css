@@ -1,5 +1,5 @@
 .header {
-    background: #ffffffe1;
+    background: #ffffff;
     color: #000;
     padding: 0;
     display: flex;
@@ -42,7 +42,6 @@
 
 .cart-btn:hover {
     color: #F29367;
-    /* Efecto hover naranja para el ícono */
 }
 
 .cart-counter {
@@ -60,7 +59,6 @@
     font-size: 10px;
     font-weight: bold;
     border: 1px solid #F29367;
-    /* Borde naranja para mejor visibilidad */
 }
 
 .hamburger-btn {
