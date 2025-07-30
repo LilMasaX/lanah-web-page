@@ -56,6 +56,54 @@
     font-size: 1rem;
   }
   
+  .buttonContainer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .emailButton {
+    flex: 1;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .emailButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .emailButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .whatsappButton {
+    flex: 1;
+    padding: 0.75rem;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .whatsappButton:hover {
+    background-color: #128c7e;
+  }
+  
+  .whatsappButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
   .submitButton {
     padding: 0.75rem;
     background-color: #007bff;

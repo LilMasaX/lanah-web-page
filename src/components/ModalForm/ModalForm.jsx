@@ -25,16 +25,50 @@ export default function ModalForm({ isOpen, onClose }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           cart,
-          formData
+          formData: form
         })
       });
       if (res.ok) {
         toast.success("¡Pedido enviado por correo! Pronto te contactaremos.");
+        clearCart();
+        onClose();
       } else {
         toast.error("Error al enviar el pedido por correo.");
       }
     } catch (error) {
       toast.error("Error de conexión al enviar el pedido.");
+    }
+  };
+
+  const handleSendWhatsApp = async () => {
+    try {
+      const res = await fetch('/api/send-whatsapp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cart,
+          formData: form
+        })
+      });
+      
+      if (res.ok) {
+        const data = await res.json();
+        
+        if (data.method === 'link' && data.whatsappUrl) {
+          // Abrir WhatsApp en nueva pestaña
+          window.open(data.whatsappUrl, '_blank');
+          toast.success("¡WhatsApp abierto! Completa el envío del mensaje.");
+        } else {
+          toast.success("¡Pedido enviado por WhatsApp! Pronto te contactaremos.");
+        }
+        
+        clearCart();
+        onClose();
+      } else {
+        toast.error("Error al enviar el pedido por WhatsApp.");
+      }
+    } catch (error) {
+      toast.error("Error de conexión al enviar por WhatsApp.");
     }
   };
 
@@ -57,7 +91,7 @@ export default function ModalForm({ isOpen, onClose }) {
 
     // Aquí es donde enviarías el pedido a tu backend.
     // Por ahora, solo lo mostraremos en la consola.
-    console.log("Pedido a enviar:", pedido);
+    
 
     toast.success("¡Pedido realizado con éxito! Gracias por tu compra.");
     clearCart(); // Vaciamos el carrito
@@ -122,9 +156,24 @@ export default function ModalForm({ isOpen, onClose }) {
               required
             />
           </div>
-          <button type="submit" className={styles.submitButton} disabled={cart.length === 0}>
-            Realizar Pedido
-          </button>
+          <div className={styles.buttonContainer}>
+            <button 
+              type="button" 
+              className={styles.emailButton} 
+              onClick={handleSendEmail}
+              disabled={cart.length === 0}
+            >
+              Enviar por Email
+            </button>
+            <button 
+              type="button" 
+              className={styles.whatsappButton} 
+              onClick={handleSendWhatsApp}
+              disabled={cart.length === 0}
+            >
+              Enviar por WhatsApp
+            </button>
+          </div>
         </form>
       </div>
     </div>
