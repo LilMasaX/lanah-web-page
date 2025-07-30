@@ -18,6 +18,7 @@ export default function Navbar() {
       <div className={`nav-content ${menuOpen ? "show" : ""}`}>
         <nav className="nav-links">
           <a href="/">Inicio</a>
+          <a href="/about">Sobre Nosotros</a>
           <a href="/products">Productos</a>
         </nav>
         <a href="/cart" className="cart-btn">
