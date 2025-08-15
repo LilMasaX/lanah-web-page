@@ -3,7 +3,7 @@
   --coral: #6767f2;
   --orange-soft: #E76F51;
   --brown-light: #DAD4CD;
-  --white: #FFFDF9;
+  --white: #FDFDFD;
 }
 
 .logoH {
@@ -33,7 +33,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--peach-light);
+  background-color: var(--white);
   color: var(--brown-light);
   font-family: 'Nunito', sans-serif;
 }
