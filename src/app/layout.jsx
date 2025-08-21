@@ -1,10 +1,10 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "./styles/globals.css";
 import AdminFooterLink from "../components/AdminFooterLink/AdminFooterLink";
 import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/NavBar/NavBar";
 import { Toaster } from "sonner";
-import "@/components/NavBar/NavBar.css";
+ 
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <Toaster />
           <header>
-            <div className="header">
+            <div className="flex items-center justify-between px-6 py-4">
               <img src="/logo.png" alt="Lanah logo" className="logoH" />
               <Navbar />
             </div>

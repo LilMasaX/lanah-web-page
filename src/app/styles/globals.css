@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --peach-light: #F6B78D;
+  --coral: #6767f2;
+  --orange-soft: #E76F51;
+  --brown-light: #DAD4CD;
+  --white: #FDFDFD;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--white);
+  color: var(--brown-light);
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Tus estilos customizados que Tailwind no cubre */
+.logoH { background: var(--orange-soft); height: 4rem; margin: 0; }
+
+@media (max-width: 900px) { .logoH { height: 3.5rem; } }
+@media (max-width: 600px) { .logoH { height: 3rem; } }
+
+a { color: var(--white); text-decoration: none; font-weight: bold; }
+a:hover { color: var(--orange-soft); }
+
+.footer { background: #F29367; color: var(--white); text-align: center; padding: 1.5rem; }
+
+button { background-color: var(--coral); color: var(--white); padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+button:hover { background-color: var(--orange-soft); }
