@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import BlurText from "@/components/BlurText/BlurText";
-import Aurora from "@/components/Aurora/Aurora";
+import CuteCrochetBackground from "@/components/CuteCrochetBackground/CuteCrochetBackground";
 
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -9,9 +9,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex(
-        (prevIndex) => (prevIndex + 1) % images.length
-      );
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 10000);
     return () => clearInterval(interval);
   }, [images.length]);
@@ -21,27 +19,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-
-      {/* 🎨 Aurora como fondo global */}
+    <div className="relative min-h-screen overflow-x-hidden ">
       <div className="fixed inset-0 -z-50">
-        <Aurora
-          color={[
-            "#F6B78D",
-            "#F29367",
-            "#FADADD",
-            "#D9F2E6",
-            "#DAD4CD",
-          ]}
-          speed={0.4}
-          direction="forward"
-          scale={1.3}
-          opacity={0.35}
-          mouseInteractive={true}
-          className="w-full h-full"
-        />
+        <CuteCrochetBackground />
       </div>
-
       {/* Contenido */}
       <section className="grid items-center justify-center gap-16 p-20 font-sans relative z-10">
 
