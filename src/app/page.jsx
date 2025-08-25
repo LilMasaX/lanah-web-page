@@ -5,7 +5,7 @@ import CuteCrochetBackground from "@/components/CuteCrochetBackground/CuteCroche
 
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = ["/prueba1.png", "/prueba2.png", "/prueba3.png"];
+  const images = ["/prueba1.jpg", "/prueba2.jpg", "/prueba3.jpg"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,9 +14,6 @@ export default function HomePage() {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const handleAnimationComplete = () => {
-    console.log("All letters have animated!");
-  };
 
   return (
     <div className="relative min-h-screen overflow-x-hidden ">
@@ -24,10 +21,10 @@ export default function HomePage() {
         <CuteCrochetBackground />
       </div>
       {/* Contenido */}
-      <section className="grid items-center justify-center gap-16 p-20 font-sans relative z-10">
+      <section className="grid items-center justify-center gap-4 p-10 font-sans relative z-10">
 
         {/* Hero Section */}
-        <section className="flex flex-col lg:flex-row items-center justify-between gap-16 min-h-[80vh] px-10">
+        <section className="flex flex-col lg:flex-row items-center justify-center gap-8 min-h-[70vh] px-10 mt-18 ">
           <div className="max-w-lg p-12 text-center rounded-3xl bg-gradient-to-br from-[#E76F51] via-[#F6B78D] to-[#FFD166] backdrop-blur-lg border border-white/30 shadow-lg transition-transform duration-300 hover:-translate-y-2">
             <img
               src="/logo.png"
@@ -47,16 +44,14 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="relative w-full lg:w-3/5 h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br from-[#E76F51] via-[#F6B78D] to-[#FFD166] shadow-lg transition-transform duration-300 hover:scale-[1.02]">
+          <div className="relative w-full lg:w-3/5 h-[598px] rounded-2xl overflow-hidden bg-gradient-to-br from-[#E76F51] via-[#F6B78D] to-[#FFD166] shadow-lg transition-transform duration-300 hover:scale-[1.02]">
             {images.map((image, index) => (
               <img
                 key={index}
                 src={image}
                 alt={`Imagen ${index + 1}`}
-                className={`absolute w-[120%] h-[90%] object-cover object-center rounded-xl transition-opacity duration-1000 ${
-                  index === currentImageIndex ? "opacity-100" : "opacity-0"
-                }`}
-                style={{ left: "-10%", top: "5%" }}
+                className={`absolute inset-0 w-full h-full object-cover object-center rounded-xl transition-opacity duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"
+                  }`}
               />
             ))}
 
@@ -66,11 +61,10 @@ export default function HomePage() {
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`w-3 h-3 rounded-full border-2 border-white/80 transition-all duration-300 ${
-                    index === currentImageIndex
+                  className={`w-3 h-3 rounded-full border-2 border-white/80 transition-all duration-300 ${index === currentImageIndex
                       ? "bg-[#F29367] shadow-md"
                       : "bg-white/50"
-                  }`}
+                    }`}
                 />
               ))}
             </div>
@@ -78,14 +72,15 @@ export default function HomePage() {
         </section>
 
         {/* Split Text */}
-        <section className="my-12 px-8 py-10 bg-gradient-to-br from-[#F6B78D]/30 via-[#FFFDF9]/90 to-[#F6B78D]/30 backdrop-blur-2xl border border-white/30 rounded-3xl text-center font-bold text-4xl text-[#FF6F61] shadow-lg transition-transform duration-300 hover:-translate-y-1 w-screen h-9/12 align-middle relative z-10">
+        <section className=" h-11/12 px-8 py-10 bg-gradient-to-br from-[#F6B78D]/30 via-[#FFFDF9]/90 to-[#F6B78D]/30 backdrop-blur-2xl border border-white/30 text-center font-bold text-4xl text-[#FF6F61] shadow-lg transition-transform duration-300 hover:-translate-y-1 w-screen align-middle relative z-10">
           <BlurText
             text="Lanah representa el cariño y la dedicación que se tejen con hilos de amor y la dulzura felina en cada detalle."
-            delay={150}
-            animateBy="words"
-            direction="top"
-            onAnimationComplete={handleAnimationComplete}
-            className="text-4x5 mb-18 align-middle"
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+            className=""
+            textColors={["#ff6b6b", "#4ecdc4", "#ffe66d"]}
           />
         </section>
 
@@ -93,7 +88,7 @@ export default function HomePage() {
         <section className="flex flex-wrap justify-center gap-12 px-4 py-20 bg-gradient-to-br from-white/90 via-[#F8F6F0]/90 to-[#FFFDF9]/90 backdrop-blur-lg border border-white/30 rounded-2xl shadow-lg text-center relative z-10">
           <div className="max-w-xs p-8 rounded-2xl bg-white/90 backdrop-blur-md shadow-md transition-transform duration-300 hover:-translate-y-2">
             <img
-              src="/prueba1.png"
+              src="/prueba1.jpg"
               alt="Crochet"
               className="w-full h-56 object-cover rounded-xl mb-4"
             />
@@ -102,7 +97,7 @@ export default function HomePage() {
           </div>
           <div className="max-w-xs p-8 rounded-2xl bg-white/90 backdrop-blur-md shadow-md transition-transform duration-300 hover:-translate-y-2">
             <img
-              src="/prueba3.png"
+              src="/prueba2.jpg"
               alt="Amor"
               className="w-full h-56 object-cover rounded-xl mb-4"
             />
@@ -111,7 +106,7 @@ export default function HomePage() {
           </div>
           <div className="max-w-xs p-8 rounded-2xl bg-white/90 backdrop-blur-md shadow-md transition-transform duration-300 hover:-translate-y-2">
             <img
-              src="/prueba4.png"
+              src="/prueba3.jpg"
               alt="Eco"
               className="w-full h-56 object-cover rounded-xl mb-4"
             />

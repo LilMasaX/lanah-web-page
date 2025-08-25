@@ -10,13 +10,23 @@ export default {
         extend: {
             colors: {
                 primary: {
-                    50: '#f0f9ff',
-                    100: '#e0f2fe',
-                    500: '#0ea5e9',
-                    600: '#0284c7',
-                    900: '#0c4a6e',
-                }
-            }
+                    DEFAULT: 'var(--orange-soft)', // #E76F51 → color principal (botones, acentos)
+                    light: 'var(--peach-light)',   // #F6B78D → tonos suaves
+                    dark: '#D3543B',               // versión más oscura del naranja
+                },
+                secondary: {
+                    DEFAULT: '#FFD166',            // amarillo cálido
+                    light: '#FFE29A',
+                    dark: '#E6B955',
+                },
+                accent: {
+                    DEFAULT: 'var(--coral)',       // #6767f2 → un contraste bonito
+                },
+                neutral: {
+                    DEFAULT: 'var(--brown-light)', // #DAD4CD → texto / bordes
+                    white: 'var(--white)',         // #FDFDFD → fondos claros
+                },
+            },
         },
     },
     plugins: [],

@@ -1,115 +1,178 @@
-import { motion } from 'framer-motion';
-import { useEffect, useRef, useState, useMemo } from 'react';
+"use client";
 
-const buildKeyframes = (from, steps) => {
-    const keys = new Set([
-        ...Object.keys(from),
-        ...steps.flatMap((s) => Object.keys(s)),
-    ]);
+import { useEffect, useRef, useState, createElement, useMemo, useCallback } from "react";
+import { gsap } from "gsap";
 
-    const keyframes = {};
-    keys.forEach((k) => {
-        keyframes[k] = [from[k], ...steps.map((s) => s[k])];
-    });
-    return keyframes;
-};
-
-const BlurText = ({
-    text = '',
-    delay = 200,
-    className = '',
-    animateBy = 'words',
-    direction = 'top',
-    threshold = 0.1,
-    rootMargin = '0px',
-    animationFrom,
-    animationTo,
-    easing = (t) => t,
-    onAnimationComplete,
-    stepDuration = 0.35,
+const TextType = ({
+    text,
+    as: Component = "div",
+    typingSpeed = 50,
+    initialDelay = 0,
+    pauseDuration = 2000,
+    deletingSpeed = 30,
+    loop = true,
+    className = "",
+    showCursor = true,
+    hideCursorWhileTyping = false,
+    cursorCharacter = "|",
+    cursorClassName = "",
+    cursorBlinkDuration = 0.5,
+    textColors = [],
+    variableSpeed,
+    onSentenceComplete,
+    startOnVisible = false,
+    reverseMode = false,
+    ...props
 }) => {
-    const elements = animateBy === 'words' ? text.split(' ') : text.split('');
-    const [inView, setInView] = useState(false);
-    const ref = useRef(null);
+    const [displayedText, setDisplayedText] = useState("");
+    const [currentCharIndex, setCurrentCharIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [currentTextIndex, setCurrentTextIndex] = useState(0);
+    const [isVisible, setIsVisible] = useState(!startOnVisible);
+    const cursorRef = useRef(null);
+    const containerRef = useRef(null);
+
+    const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
+
+    const getRandomSpeed = useCallback(() => {
+        if (!variableSpeed) return typingSpeed;
+        const { min, max } = variableSpeed;
+        return Math.random() * (max - min) + min;
+    }, [variableSpeed, typingSpeed]);
+
+    const getCurrentTextColor = () => {
+        if (textColors.length === 0) return "#ffffff";
+        return textColors[currentTextIndex % textColors.length];
+    };
 
     useEffect(() => {
-        if (!ref.current) return;
+        if (!startOnVisible || !containerRef.current) return;
+
         const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setInView(true);
-                    observer.unobserve(ref.current);
-                }
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                    }
+                });
             },
-            { threshold, rootMargin }
+            { threshold: 0.1 }
         );
-        observer.observe(ref.current);
+
+        observer.observe(containerRef.current);
         return () => observer.disconnect();
+    }, [startOnVisible]);
+
+    useEffect(() => {
+        if (showCursor && cursorRef.current) {
+            gsap.set(cursorRef.current, { opacity: 1 });
+            gsap.to(cursorRef.current, {
+                opacity: 0,
+                duration: cursorBlinkDuration,
+                repeat: -1,
+                yoyo: true,
+                ease: "power2.inOut",
+            });
+        }
+    }, [showCursor, cursorBlinkDuration]);
+
+    useEffect(() => {
+        if (!isVisible) return;
+
+        let timeout;
+
+        const currentText = textArray[currentTextIndex];
+        const processedText = reverseMode
+            ? currentText.split("").reverse().join("")
+            : currentText;
+
+        const executeTypingAnimation = () => {
+            if (isDeleting) {
+                if (displayedText === "") {
+                    setIsDeleting(false);
+                    if (currentTextIndex === textArray.length - 1 && !loop) {
+                        return;
+                    }
+
+                    if (onSentenceComplete) {
+                        onSentenceComplete(textArray[currentTextIndex], currentTextIndex);
+                    }
+
+                    setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
+                    setCurrentCharIndex(0);
+                    timeout = setTimeout(() => { }, pauseDuration);
+                } else {
+                    timeout = setTimeout(() => {
+                        setDisplayedText((prev) => prev.slice(0, -1));
+                    }, deletingSpeed);
+                }
+            } else {
+                if (currentCharIndex < processedText.length) {
+                    timeout = setTimeout(
+                        () => {
+                            setDisplayedText(
+                                (prev) => prev + processedText[currentCharIndex]
+                            );
+                            setCurrentCharIndex((prev) => prev + 1);
+                        },
+                        variableSpeed ? getRandomSpeed() : typingSpeed
+                    );
+                } else if (textArray.length > 1) {
+                    timeout = setTimeout(() => {
+                        setIsDeleting(true);
+                    }, pauseDuration);
+                }
+            }
+        };
+
+        if (currentCharIndex === 0 && !isDeleting && displayedText === "") {
+            timeout = setTimeout(executeTypingAnimation, initialDelay);
+        } else {
+            executeTypingAnimation();
+        }
+
+        return () => clearTimeout(timeout);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [threshold, rootMargin]);
+    }, [
+        currentCharIndex,
+        displayedText,
+        isDeleting,
+        typingSpeed,
+        deletingSpeed,
+        pauseDuration,
+        textArray,
+        currentTextIndex,
+        loop,
+        initialDelay,
+        isVisible,
+        reverseMode,
+        variableSpeed,
+        onSentenceComplete,
+    ]);
 
-    const defaultFrom = useMemo(
-        () =>
-            direction === 'top'
-                ? { filter: 'blur(10px)', opacity: 0, y: -50 }
-                : { filter: 'blur(10px)', opacity: 0, y: 50 },
-        [direction]
-    );
+    const shouldHideCursor =
+        hideCursorWhileTyping &&
+        (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
 
-    const defaultTo = useMemo(
-        () => [
-            {
-                filter: 'blur(5px)',
-                opacity: 0.5,
-                y: direction === 'top' ? 5 : -5,
-            },
-            { filter: 'blur(0px)', opacity: 1, y: 0 },
-        ],
-        [direction]
-    );
-
-    const fromSnapshot = animationFrom ?? defaultFrom;
-    const toSnapshots = animationTo ?? defaultTo;
-
-    const stepCount = toSnapshots.length + 1;
-    const totalDuration = stepDuration * (stepCount - 1);
-    const times = Array.from({ length: stepCount }, (_, i) =>
-        stepCount === 1 ? 0 : i / (stepCount - 1)
-    );
-
-    return (
-        <p
-            ref={ref}
-            className={`blur-text ${className} flex flex-wrap`}
-        >
-            {elements.map((segment, index) => {
-                const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
-
-                const spanTransition = {
-                    duration: totalDuration,
-                    times,
-                    delay: (index * delay) / 1000,
-                };
-                (spanTransition).ease = easing;
-
-                return (
-                    <motion.span
-                        className="inline-block will-change-[transform,filter,opacity]"
-                        key={index}
-                        initial={fromSnapshot}
-                        animate={inView ? animateKeyframes : fromSnapshot}
-                        transition={spanTransition}
-                        onAnimationComplete={
-                            index === elements.length - 1 ? onAnimationComplete : undefined
-                        }
-                    >
-                        {segment === ' ' ? '\u00A0' : segment}
-                        {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}
-                    </motion.span>
-                );
-            })}
-        </p>
+    return createElement(
+        Component,
+        {
+            ref: containerRef,
+            className: `inline-block whitespace-pre-wrap tracking-tight ${className}`,
+            ...props,
+        },
+        <span className="inline" style={{ color: getCurrentTextColor() }}>
+            {displayedText}
+        </span>,
+        showCursor && (
+            <span
+                ref={cursorRef}
+                className={`ml-1 inline-block opacity-100 ${shouldHideCursor ? "hidden" : ""} ${cursorClassName}`}
+            >
+                {cursorCharacter}
+            </span>
+        )
     );
 };
 
-export default BlurText;
+export default TextType;

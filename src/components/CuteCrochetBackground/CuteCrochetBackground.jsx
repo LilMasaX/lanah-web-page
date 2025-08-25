@@ -83,7 +83,7 @@ const CrochetHookSVG = ({ size = 24 }) => (
 );
 
 return (
-<div className="fixed inset-0 overflow-hidden pointer-events-none bg-white">
+<div className="fixed inset-0 overflow-hidden pointer-events-none bg-amber-100">
 {/* Partículas de lana flotantes */}
 {Array.from({ length: 20 }).map((_, i) => (
 <div
