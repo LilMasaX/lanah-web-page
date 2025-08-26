@@ -17,9 +17,12 @@ export default async function ProductsPage() {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#E76F51] text-center mb-4 drop-shadow-lg">
           Nuestros Productos
         </h1>
-        <p className="text-lg md:text-xl text-[#8D5524] text-center max-w-2xl mx-auto leading-relaxed">
-          Descubre nuestra colección de productos artesanales hechos con amor y dedicación
-        </p>
+      </div>
+
+      <div classname="max-w-lg p-12 text-center rounded-3xl bg-gradient-to-br from-[#E76F51] via-[#F6B78D] to-[#FFD166] backdrop-blur-lg border border-white/30 shadow-lg transition-transform duration-300 hover:-translate-y-2" >
+        <h1 classname= "">
+          Productos a personalizados a pedido!
+        </h1>
       </div>
 
       {/* Contenedor de productos */}
