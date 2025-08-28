@@ -2,10 +2,14 @@
 import { useState } from "react";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import dynamic from "next/dynamic";
+
+const CartModal = dynamic(() => import("@/components/CartModal/CartModal"), { ssr: false });
 
 export default function Navbar() {
   const { cart } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between w-full px-6 py-4 rounded-2xl shadow-[0_2px_20px_rgba(231,111,81,0.1)] border-b border-[rgba(231,111,81,0.2)] bg-white/10 backdrop-blur-md">
@@ -30,9 +34,10 @@ export default function Navbar() {
       {/* Carrito y botón de menú móvil a la derecha */}
       <div className="flex items-center gap-4">
         {/* Carrito */}
-        <a 
-          href="/cart" 
-          className="relative flex text-white transition-all duration-300 p-3 rounded-xl bg-gradient-to-br from-[#E76F51] to-[#F6B78D] border border-white/20 no-underline hover:bg-white/20 hover:-translate-y-0.5 hover:scale-105 shadow-[0_6px_20px_rgba(231,111,81,0.3)] backdrop-blur"
+        <button
+          onClick={() => setCartOpen(true)}
+          className="relative flex text-white transition-all duration-300 p-3 rounded-xl bg-gradient-to-br from-[#E76F51] to-[#F6B78D] border border-white/20 hover:bg-white/20 hover:-translate-y-0.5 hover:scale-105 shadow-[0_6px_20px_rgba(231,111,81,0.3)] backdrop-blur"
+          aria-label="Abrir carrito"
         >
           <ShoppingCart size={25} />
           {cart.length > 0 && (
@@ -40,7 +45,7 @@ export default function Navbar() {
               {cart.length}
             </span>
           )}
-        </a>
+        </button>
 
         {/* Botón de menú móvil */}
         <button
@@ -81,6 +86,13 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      {/* Cart Modal */}
+      <CartModal
+        isOpen={cartOpen}
+        onClose={() => setCartOpen(false)}
+        onCheckout={() => setCartOpen(false)}
+      />
     </nav>
   );
 }

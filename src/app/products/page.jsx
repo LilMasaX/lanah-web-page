@@ -1,5 +1,6 @@
 import { getProductos } from "@/actions/products/productos";
 import CardProduct from "@/components/CardProduct/CardProduct";
+import CustomProductsSection from "@/components/CustomProductsSection/CustomProductsSection";
 import CuteCrochetBackground from "@/components/CuteCrochetBackground/CuteCrochetBackground";
 
 export default async function ProductsPage() {
@@ -7,21 +8,16 @@ export default async function ProductsPage() {
   console.log(productos);
   
   return (
+    <>
     <div className="relative min-h-screen overflow-x-hidden">
       <div className="fixed inset-0 -z-50">
         <CuteCrochetBackground />
       </div>
       
       {/* Header de la página */}
-      <div className="pt-32 pb-8 px-6">
+      <div className="pt-32 pb-8 px-6 mt-10">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#E76F51] text-center mb-4 drop-shadow-lg">
           Nuestros Productos
-        </h1>
-      </div>
-
-      <div classname="max-w-lg p-12 text-center rounded-3xl bg-gradient-to-br from-[#E76F51] via-[#F6B78D] to-[#FFD166] backdrop-blur-lg border border-white/30 shadow-lg transition-transform duration-300 hover:-translate-y-2" >
-        <h1 classname= "">
-          Productos a personalizados a pedido!
         </h1>
       </div>
 
@@ -51,6 +47,8 @@ export default async function ProductsPage() {
         )}
       </div>
     </div>
+    <CustomProductsSection />
+    </>
   );
 }
 
