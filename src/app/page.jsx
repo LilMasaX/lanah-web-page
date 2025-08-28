@@ -74,7 +74,7 @@ export default function HomePage() {
         <CustomProductsSection />
         {/* Features Section */}
         <section className="flex flex-wrap justify-center gap-12 py-20 bg-gradient-to-br from-white/90 via-[#F8F6F0]/90 to-[#FFFDF9]/90 backdrop-blur-lg border border-white/30 lg:w-screen shadow-lg text-center relative z-10">
-          <div className=" max-w-xs p-8 rounded-2xl bg-white/90 backdrop-blur-md shadow-md transition-transform duration-300 hover:-translate-y-2">
+          <div className="max-w-xs p-8 rounded-2xl bg-white/90 backdrop-blur-md shadow-md transition-transform duration-300 hover:-translate-y-2">
             <img
               src="/Tiburon.png"
               alt="Crochet"
