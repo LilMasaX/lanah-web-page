@@ -2,7 +2,6 @@ import CardProductAdmin from "@/components/CardProductAdmin/cardProductAdmin";
 import { getProductos } from "@/actions/products/productos";
 import { deleteProduct } from "@/actions/products/deleteProduct";
 import AddProductModal from "@/components/AddProductModal/AddProductModal";
-import styles from "./AdminProducts.module.css";
 
 export default async function AdminProductsPage() {
   const productos = await getProductos();
@@ -18,16 +17,16 @@ export default async function AdminProductsPage() {
 
   return (
     <main>
-      <div className={styles.buttonAddProduct}>
+      <div className="flex justify-end mt-35 mr-8">
         <AddProductModal />
       </div>
-      <h1 className={styles.titulo}>Productos</h1>
-      <p className={styles.descripcion}>
+      <h1 className="text-3xl font-bold text-[#8D5524] mb-2 text-center">Productos</h1>
+      <p className="text-base text-[#8D5524] mb-6 text-center">
         Administra tu catálogo, stock y fotos de los productos.
       </p>
-      <div className={styles.productosGrid}>
+      <div className="flex flex-wrap gap-8">
         {productos.length === 0 ? (
-          <p>No hay productos disponibles.</p>
+          <p className="text-gray-600 text-center w-full">No hay productos disponibles.</p>
         ) : (
           productos.map((producto) => (
             <CardProductAdmin
