@@ -13,15 +13,15 @@ export const metadata = {
   keywords: ["crochet", "tejidos a mano", "artesanía", "tienda crochet", "Lanah"],
   authors: [{ name: "Lanah" }],
   creator: "Lanah",
-  metadataBase: new URL("https://lanah.com"), // 👈 cámbialo a tu dominio real
+/*   metadataBase: new URL("https://lanah.com"),  */
   openGraph: {
     title: "Lanah - Tienda de Crochet",
     description: "Descubre creaciones únicas de crochet hechas con amor en Lanah.",
-    url: "https://lanah.com",
+/*     url: "https://lanah.com", */
     siteName: "Lanah",
     images: [
       {
-        url: "/images/og-image.jpg", // 👈 pon aquí tu imagen de portada (1200x630px recomendado)
+        url: "/public/Pumpum.png", 
         width: 1200,
         height: 630,
         alt: "Lanah Tienda de Crochet",
@@ -30,16 +30,8 @@ export const metadata = {
     locale: "es_ES",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Lanah - Tienda de Crochet",
-    description: "Creaciones artesanales de crochet hechas con amor.",
-    creator: "@tu_usuario", // 👈 si tienes Twitter
-    images: ["/images/og-image.jpg"],
-  },
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
   },
 };
 
