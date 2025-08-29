@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+:root {
+  --peach-light: #F6B78D;
+  --coral: #6767f2;
+  --orange-soft: #E76F51;
+  --brown-light: #DAD4CD;
+  --white: #FDFDFD;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--white);
+  color: var(--brown-light);
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Tus estilos customizados que Tailwind no cubre */
+

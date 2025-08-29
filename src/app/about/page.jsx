@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import styles from './about.module.css';
-import SplitText from "@/components/SplitText/SplitText";
+import BlurText from "@/components/BlurText/BlurText";
 
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,14 +16,11 @@ export default function AboutPage() {
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <div className={styles.splitTextContainer}>
-            <SplitText
+            <BlurText
               text="Sobre Nosotros"
               delay={50}
-              duration={0.5}
-              ease="power3.out"
-              splitType="words"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
+              animateBy="words"
+              direction="top"
               threshold={0.1}
             />
           </div>
