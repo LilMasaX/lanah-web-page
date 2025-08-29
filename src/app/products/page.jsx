@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getProductos } from "@/actions/products/productos";
 import CardProduct from "@/components/CardProduct/CardProduct";
 import CustomProductsSection from "@/components/CustomProductsSection/CustomProductsSection";
@@ -51,4 +53,3 @@ export default async function ProductsPage() {
     </>
   );
 }
-
