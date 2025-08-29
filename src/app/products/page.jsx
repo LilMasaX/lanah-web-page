@@ -22,7 +22,7 @@ export default async function ProductsPage() {
       </div>
 
       {/* Contenedor de productos */}
-      <div className="px-6 pb-20">
+      <div className="px-6 pb-20 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {productos.map((producto) => (
             <CardProduct

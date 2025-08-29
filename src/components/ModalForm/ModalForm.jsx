@@ -4,9 +4,9 @@ import { useCart } from "@/context/CartContext";
 import { toast } from "sonner";
 import { X } from "lucide-react";
 
-
 export default function ModalForm({ isOpen, onClose }) {
   const { cart, clearCart } = useCart();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -14,11 +14,13 @@ export default function ModalForm({ isOpen, onClose }) {
     adress: "",
   });
 
-  // const getWhatsappMessage = () => {
-  //   const productos = cart.map(item => `${}`)
-  // }
-
   const handleSendEmail = async () => {
+    if (cart.length === 0) {
+      toast.error("Tu carrito está vacío.");
+      return;
+    }
+
+    setIsSubmitting(true);
     try {
       const res = await fetch('/api/send-order', {
         method: 'POST',
@@ -28,19 +30,30 @@ export default function ModalForm({ isOpen, onClose }) {
           formData: form
         })
       });
+      
       if (res.ok) {
         toast.success("¡Pedido enviado por correo! Pronto te contactaremos.");
         clearCart();
         onClose();
       } else {
-        toast.error("Error al enviar el pedido por correo.");
+        const errorData = await res.json().catch(() => ({}));
+        toast.error(errorData.message || "Error al enviar el pedido por correo.");
       }
     } catch (error) {
+      console.error("Error sending email:", error);
       toast.error("Error de conexión al enviar el pedido.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleSendWhatsApp = async () => {
+    if (cart.length === 0) {
+      toast.error("Tu carrito está vacío.");
+      return;
+    }
+
+    setIsSubmitting(true);
     try {
       const res = await fetch('/api/send-whatsapp', {
         method: 'POST',
@@ -65,10 +78,14 @@ export default function ModalForm({ isOpen, onClose }) {
         clearCart();
         onClose();
       } else {
-        toast.error("Error al enviar el pedido por WhatsApp.");
+        const errorData = await res.json().catch(() => ({}));
+        toast.error(errorData.message || "Error al enviar el pedido por WhatsApp.");
       }
     } catch (error) {
+      console.error("Error sending WhatsApp:", error);
       toast.error("Error de conexión al enviar por WhatsApp.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -78,30 +95,14 @@ export default function ModalForm({ isOpen, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (cart.length === 0) {
-      alert("Tu carrito está vacío.");
-      return;
-    }
-
-    const pedido = {
-      cliente: form,
-      productos: cart.map(p => ({ nombre: p.nombre, precio: p.precio, _id: p._id })),
-      total: cart.reduce((sum, item) => sum + (item.precio || 0), 0)
-    };
-
-    // Aquí es donde enviarías el pedido a tu backend.
-    // Por ahora, solo lo mostraremos en la consola.
-    
-
-    toast.success("¡Pedido realizado con éxito! Gracias por tu compra.");
-    clearCart(); // Vaciamos el carrito
-    onClose(); // Cerramos el modal
+    // Por defecto, usar el método de email
+    handleSendEmail();
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-start justify-center h-screen  p-4 md:p-6 bg-black/60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[70] flex items-start justify-center h-screen p-4 md:p-6 bg-black/60 backdrop-blur-sm">
       <div className="relative w-full max-w-lg md:max-w-xl bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-white/50 overflow-hidden">
         <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-[#E76F51] via-[#F6B78D] to-[#FFD166] text-white">
           <h2 className="text-lg md:text-xl font-bold">Datos de envío</h2>
@@ -129,11 +130,20 @@ export default function ModalForm({ isOpen, onClose }) {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
-            <button type="button" onClick={handleSendEmail} disabled={cart.length === 0} className="flex-1 px-5 py-3 rounded-xl font-semibold text-white bg-gradient-to-br from-sky-500 to-blue-600 shadow-md hover:shadow-lg hover:scale-[1.01] transition disabled:opacity-50">
-              Te contactamos!
+            <button 
+              type="submit" 
+              disabled={cart.length === 0 || isSubmitting} 
+              className="flex-1 px-5 py-3 rounded-xl font-semibold text-white bg-gradient-to-br from-sky-500 to-blue-600 shadow-md hover:shadow-lg hover:scale-[1.01] transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Enviando..." : "Te contactamos!"}
             </button>
-            <button type="button" onClick={handleSendWhatsApp} disabled={cart.length === 0} className="flex-1 px-5 py-3 rounded-xl font-semibold text-white bg-gradient-to-br from-[#25D366] to-[#128C7E] shadow-md hover:shadow-lg hover:scale-[1.01] transition disabled:opacity-50">
-              Enviar por WhatsApp
+            <button 
+              type="button" 
+              onClick={handleSendWhatsApp} 
+              disabled={cart.length === 0 || isSubmitting} 
+              className="flex-1 px-5 py-3 rounded-xl font-semibold text-white bg-gradient-to-br from-[#25D366] to-[#128C7E] shadow-md hover:shadow-lg hover:scale-[1.01] transition disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Enviando..." : "Enviar por WhatsApp"}
             </button>
           </div>
         </form>

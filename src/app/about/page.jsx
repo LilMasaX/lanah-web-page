@@ -22,7 +22,7 @@ export default function AboutPage() {
         </div>
         <div className="flex-1 relative h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-[#FADADD] to-[#D9F2E6]">
           <img 
-            src="/fondo-crochet.jpg" 
+            src="/about1.jpeg" 
             alt="Artesanía Lanah" 
             className="w-full h-full object-cover rounded-3xl shadow-2xl"
           />
@@ -45,7 +45,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="flex-1 rounded-2xl overflow-hidden shadow-xl">
-            <img src="/prueba1.png" alt="Nuestro proceso artesanal" className="w-full h-[300px] object-cover" />
+            <img src="/about2.jpeg" alt="Nuestro proceso artesanal" className="w-full h-[300px] object-cover" />
           </div>
         </div>
       </section>

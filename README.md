@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lanah Web
 
-## Getting Started
+**Lanah Web** es una tienda online de productos artesanales de crochet, con funcionalidades de catálogo, carrito de compras, pedidos personalizados y administración. El proyecto está construido con **Next.js 15**, **React 19** y **Tailwind CSS 4**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Características principales
+
+- **Catálogo de productos**: Visualiza productos con imágenes, descripciones y stock.
+- **Carrito de compras**: Añade productos, ajusta cantidades y realiza pedidos.
+- **Pedidos por WhatsApp y Email**: Envía tu pedido directamente al administrador vía WhatsApp o correo electrónico.
+- **Pedidos personalizados**: Solicita productos a medida desde la web.
+- **Panel de administración**: Agrega, edita y elimina productos fácilmente.
+- **Animaciones y UI moderna**: Interfaz atractiva, responsiva y animada.
+- **Notificaciones**: Feedback visual con toasts para acciones del usuario.
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- **Next.js 15** (App Router, API Routes)
+- **React 19**
+- **Tailwind CSS 4**
+- **MongoDB & Mongoose** (persistencia de productos)
+- **Nodemailer** (envío de emails)
+- **Cloudinary** (gestión de imágenes)
+- **Framer Motion & GSAP** (animaciones)
+- **Lucide React** (iconos)
+- **Sonner** (notificaciones)
+- **ngrok** (testing local de webhooks)
+
+---
+
+## 🚀 Instalación y ejecución local
+
+1. **Clona el repositorio:**
+   ```bash
+   git clone https://github.com/tu-usuario/lanah-web.git
+   cd lanah-web
+   ```
+
+2. **Instala las dependencias:**
+   ```bash
+   npm install
+   ```
+
+3. **Configura las variables de entorno:**
+   Crea un archivo `.env.local` en la raíz del proyecto con el siguiente contenido:
+   ```env
+   # Número de WhatsApp del administrador (formato internacional, sin +, guiones ni espacios)
+   ADMIN_PHONE=573001234567
+
+   # Configuración de MongoDB
+   MONGODB_URI=mongodb+srv://<usuario>:<password>@<cluster>.mongodb.net/lanah
+
+   # (Opcional) Configuración de email para producción
+   # EMAIL_USER=tu-email@gmail.com
+   # EMAIL_PASS=tu-contraseña-de-aplicación
+   ```
+
+4. **Ejecuta el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Abre la app en tu navegador:**
+   ```
+   http://localhost:3000
+   ```
+
+---
+
+## 📦 Scripts útiles
+
+- `npm run dev` — Inicia el servidor de desarrollo
+- `npm run build` — Compila la aplicación para producción
+- `npm start` — Inicia la app en modo producción
+- `npm run lint` — Ejecuta el linter
+
+---
+
+## 📁 Estructura principal
+
+```
+src/
+  app/                # Páginas y rutas API
+  components/         # Componentes reutilizables
+  context/            # Contextos de React (ej. carrito)
+  actions/            # Lógica de negocio y acceso a datos
+  utils/              # Utilidades y helpers
+public/               # Imágenes y assets estáticos
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📝 Notas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **No subas tu archivo `.env.local` a repositorios públicos.**
+- El envío de emails está simulado por consola, pero puedes integrarlo fácilmente con servicios como SendGrid o Gmail.
+- El número de WhatsApp debe estar en formato internacional (ejemplo para Colombia: `573001234567`).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧑‍💻 Autor
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [William Sotaquira](https://github.com/LilMasaX)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🔒 Licencia
+
+Este proyecto es de **licencia cerrada**. El código fuente y los recursos aquí presentados son propiedad exclusiva del autor y no pueden ser copiados, redistribuidos ni utilizados con fines comerciales sin autorización expresa.
