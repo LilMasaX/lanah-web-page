@@ -13,15 +13,11 @@ export const metadata = {
   keywords: ["crochet", "tejidos a mano", "artesanía", "tienda crochet", "Lanah"],
   authors: [{ name: "Lanah" }],
   creator: "Lanah",
-/*   metadataBase: new URL("https://lanah.com"),  */
+  /* metadataBase: new URL("https://lanah.com"), */
   openGraph: {
-    title: "Lanah - Tienda de Crochet",
-    description: "Descubre creaciones únicas de crochet hechas con amor en Lanah.",
-/*     url: "https://lanah.com", */
-    siteName: "Lanah",
     images: [
       {
-        url: "/public/Pumpum.png", 
+        url: "/Pumpum.png", // He quitado "public" ya que en producción no existe esa carpeta
         width: 1200,
         height: 630,
         alt: "Lanah Tienda de Crochet",
